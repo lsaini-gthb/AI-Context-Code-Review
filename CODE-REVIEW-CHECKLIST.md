@@ -19,6 +19,7 @@
 | [Null Safety](#8-null-safety) | Are null cases handled beyond simple NPE checks? |
 | [Boundary Conditions](#9-boundary-conditions) | Are edge cases and limits properly handled? |
 | [Unit Tests](#10-unit-tests) | Do tests follow given / when / then + assert? |
+| [Java Checkstyle Rules](#11-Java-Checkstyle-Rules) | is code written follow pre define checkstyle? |
 
 ---
 
@@ -318,6 +319,79 @@ void should_throwException_when_orderHasNoItems() {
         .hasMessageContaining("No items");
 }
 ```
+
+---
+
+## 11. Java Checkstyle Rules
+
+### Naming & Declarations
+- [ ] Package names match `^[a-z]+(\.[a-z][a-z0-9]*)*$`
+- [ ] Type, method, parameter, member, constant, static, local, and local-final names follow configured naming checks
+- [ ] Declarations are ordered and not grouped into multiple variables in one declaration
+- [ ] Modifiers are in correct order and redundant modifiers are removed
+- [ ] Abstract class naming follows `AbstractClassName`
+
+### Imports
+- [ ] No wildcard imports
+- [ ] No illegal imports
+- [ ] No redundant imports
+- [ ] No unused imports
+
+### Formatting & Whitespace
+- [ ] Max line length is 260 characters (`tabWidth=4`)
+- [ ] No tab characters are used
+- [ ] No trailing spaces on any line
+- [ ] Operator wrapping follows rule (`OperatorWrap`)
+- [ ] Parenthesis spacing follows configured `ParenPad` and `TypecastParenPad`
+- [ ] Required whitespace after commas/semicolons is present
+- [ ] Whitespace around tokens follows `WhitespaceAround`
+- [ ] No invalid whitespace before/after tokens (`NoWhitespaceBefore`, `NoWhitespaceAfter`)
+- [ ] Method/for-loop parameter padding follows rules (`MethodParamPad`, `EmptyForIteratorPad`)
+- [ ] Array type style and trailing comma rules are followed
+- [ ] Long literals use uppercase `L` (`UpperEll`)
+
+### Braces, Blocks & Flow
+- [ ] Left brace placement follows newline style (`LeftCurly` option `nl`)
+- [ ] Right brace placement for `else` follows `RightCurly` option `alone`
+- [ ] `if/else/for/while/do` always use braces (`NeedBraces`)
+- [ ] No empty statements or invalid empty blocks
+- [ ] Nested blocks are avoided (except allowed switch-case usage)
+- [ ] `default` appears last in switch statements
+- [ ] Missing switch `default` is reviewed and justified
+
+### Complexity & Size Limits
+- [ ] Method length is <= 200 lines (excluding empty lines)
+- [ ] Parameter count is <= 16
+- [ ] Boolean expression complexity is <= 16
+- [ ] Cyclomatic complexity is <= 50
+- [ ] Class fan-out complexity is <= 50
+- [ ] Nested `if` depth is <= 3
+- [ ] Nested `try` depth is <= 2
+- [ ] File length warnings are reviewed
+
+### Correctness & Safety
+- [ ] `equals`/`hashCode` contract checks pass (`EqualsHashCode`, `CovariantEquals`)
+- [ ] No string comparison with `==` (`StringLiteralEquality`)
+- [ ] No illegal instantiation patterns
+- [ ] No assignment in inner expressions
+- [ ] Parameters are not reassigned
+- [ ] Utility classes hide constructors when appropriate
+- [ ] Interface/type usage follows `InterfaceIsType`
+- [ ] Visibility follows configured `VisibilityModifier` allowances
+- [ ] Field shadowing (`HiddenField`) is reviewed and intentional
+- [ ] Boolean expressions/returns are simplified when possible
+- [ ] Unnecessary parentheses are avoided
+- [ ] Explicit default initialization is not used unless needed
+- [ ] `super.clone()` is used correctly when implementing clone
+- [ ] `this` usage follows `RequireThis` (`checkMethods=false`)
+- [ ] Final parameters rule (`FinalParameters`) is respected
+
+### Documentation, Packages & Suppressions
+- [ ] Type-level Javadocs are present (`JavadocType`)
+- [ ] Package declaration and package annotations are correct
+- [ ] Required Java file header matches configured `RegexpHeader`
+- [ ] TODO comments are tracked and intentional
+- [ ] `@SuppressWarnings` usage is justified and scoped correctly
 
 ---
 
